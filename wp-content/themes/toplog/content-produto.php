@@ -1,6 +1,6 @@
 <?php $imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); ?>
 <li class="box-conteudo imagem full-height item" style="background-image: url('<?php if($imagem[0]){ echo $imagem[0]; } ?>');"">
-	<div class="container">
+	<div class="container" style="top:0;">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<a href="javascript:" class="mais close-item" title="Saiba mais"></a>

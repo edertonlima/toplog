@@ -54,10 +54,10 @@
         		$i = $i+1;
         		$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); ?>
 
-				<div class="row" id="importacao">
+				<div class="row" id="<?php the_field('ancora') ?>">
 					<div class="col-md-5 col-md-offset-1 img-middle center">
 						<?php if($imagem[0]){ ?>
-							<img src="<?php echo $imagem[0]; ?>" alt="IMPORTAÇÃO POR CONTA E ORDEM">
+							<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>">
 						<?php } ?>
 					</div>
 					<div class="col-md-6">

@@ -74,13 +74,14 @@
 			</div>
 			<div class="col-md-6 box-contato">
 				<h2 class="destaque center">Fale Conosco</h2>
-				<form action="javascript:">
+				<p class="msg-form"></p>
+				<form action="javascript:" class="contato">
 					<fieldset>
-						<input type="text" name="" placeholder="NOME">
-						<input type="text" name="" placeholder="E-MAIL">
-						<input type="text" name="" placeholder="TELEFONE">
-						<textarea name="" id="" placeholder="ESCREVA AQUI SUA MENSAGEM"></textarea>
-						<button type="submit">ENVIAR</button>
+						<input type="text" name="nome" id="nome" placeholder="NOME">
+						<input type="text" name="email" id="email" placeholder="E-MAIL">
+						<input type="text" name="telefone" id="telefone" placeholder="TELEFONE">
+						<textarea name="mensagem" id="mensagem" placeholder="ESCREVA AQUI SUA MENSAGEM"></textarea>
+						<button type="submit" class="enviar">ENVIAR</button>
 					</fieldset>
 				</form>
 			</div>
@@ -89,3 +90,27 @@
 </session>
 
 <?php get_footer(); ?>
+ 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".enviar").click(function(){
+			$('.enviar').html('ENVIANDO').prop( "disabled", true );
+			$('.msg-form').html('').hide();
+			var nome = $('#nome').val();
+			var email = $('#email').val();
+			var telefone = $('#telefone').val();
+			var mensagem = $('#mensagem').val();
+
+			if(email!=''){
+				$.getJSON("<?php echo get_template_directory_uri(); ?>/mail.php", { nome: nome, email: email, telefone: telefone, mensagem: mensagem }, function(result){		
+					$('.msg-form').html(result).show();
+					$('.contato').trigger("reset");
+					$('.enviar').html('ENVIAR').prop( "disabled", false );
+				});
+			}else{
+				$('.msg-form').html('Por favor, digite um e-mail válido.').show();
+				$('.enviar').html('Enviar').prop( "disabled", false );
+			}
+		});
+	});
+</script>

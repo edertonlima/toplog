@@ -58,9 +58,36 @@
 
 	<session class="box-conteudo" id="nossa-historia">
 		<div class="container">
-			<div class="row">
+			<div class="row margin-bottom-50">
 				<div class="col-md-12">
 					<?php the_content(); ?>
+				</div>
+			</div>
+
+			<?php
+		    $getClientes = array(
+		        'post_type' => 'clientes',
+		        'post_status' => 'any',
+		        'orderby'           => date,
+		        'order'             => 'ASC'
+		    );
+		    $clientes = new WP_Query( $getClientes ); ?>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="carousel" id="clientes">
+						<?php while($clientes->have_posts()) : $clientes->the_post(); 
+							$i = $i+1; 
+							$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); ?>
+							<div class="item">
+								<?php if(get_field('url_cliente')){ ?>
+									<a href="<?php the_field('url_cliente'); ?>" target="_blank" title="<?php echo get_the_title(); ?>"><img src="<?php echo $imagem[0]; ?>" alt="<?php echo get_the_title(); ?>"></a>
+								<?php }else{ ?>
+									<img src="<?php echo $imagem[0]; ?>" alt="<?php echo get_the_title(); ?>">
+								<?php } ?>
+							</div>
+						<?php endwhile; ?>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -68,3 +95,21 @@
 
 <?php endwhile; ?>
 <?php get_footer(); ?>
+
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#clientes').bxSlider({
+			minSlides: 2,
+			maxSlides: 4,
+			slideWidth: 150,
+			slideMargin: 50,
+			pager: false,
+			auto: true,
+			pause: 6000,
+			controls: false,
+			autoStart: true,
+			responsive: true
+		});
+	});
+</script>

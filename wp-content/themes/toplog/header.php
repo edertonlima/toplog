@@ -40,6 +40,17 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap-filestyle.min.js"></script>
 
 <script type="text/javascript">
+
+	/* MENU FIXED */
+	var position = '';
+	function menuFixed(position){		
+		if(position > 1){
+			jQuery('.header-menu').addClass('menu-fixed');
+		}else{
+			jQuery('.header-menu').removeClass('menu-fixed');
+		}
+	}
+
 	$(document).ready(function(){
 
 		/* OPEN/CLOSE MENU */
@@ -59,20 +70,25 @@
 			$('.sub-menu').toggle();
 		});
 
-		/* SELECT */ 
-		$(document).ready(function(){
+		/* SELECT */
+		/* SELECT2 */
+		$("select").select2({
+			minimumResultsForSearch: 200
+		});
 
-			/* SELECT2 */
-			$("select").select2({
-				minimumResultsForSearch: 200
-			});
+		/* FILE STYLE */
+		$("input").filestyle({buttonText: "Selecionar"});
 
-			/* FILE STYLE */
-			$("input").filestyle({buttonText: "Selecionar"});
-
-		});	
+		/* MENU FIXED */
+		position = jQuery(window).scrollTop();
+    	menuFixed(position);
+	    jQuery(window).scroll(function(){
+	    	position = jQuery(window).scrollTop();
+	    	menuFixed(position);
+	    });
 
 	});	
+
 </script>
 
 </head>
@@ -92,7 +108,13 @@
 				wp_nav_menu( array(
 					'menu'           => 'Menu Topo',
 				    'theme_location' => 'primary',
-				    'items_wrap'     => '<nav class="nav"><ul class="menu"><div class="container">%3$s</div></ul></nav>'
+				    'items_wrap'     => '<nav class="nav"><ul class="menu"><div class="container">
+				    	<li class="idioma">
+				    		<a href="http://localhost/di20/toplog/" title="PT">PT</a>
+				    		<a href="http://localhost/di20/toplog/en" title="EN">EN</a>
+				    		<a href="http://localhost/di20/toplog/es" title="ES">ES</a>
+				    	</li>
+				    %3$s</div></ul></nav>'
 				) );
 			 ?>
 

@@ -45,6 +45,7 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<h2 class="destaque center">Fale Conosco</h2>
+					<p class="msg-form msg-contato"></p>
 					<form action="javascript:">
 						<fieldset class="col-md-6">
 							<input type="text" name="" placeholder="NOME COMPLETO *">
@@ -113,7 +114,8 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<h2 class="destaque center">SEU CURRÍCULO</h2>
-					<form action="javascript:">
+					<p class="msg-form msg-curriculo"></p>
+					<form action="javascript:" class="trabalhe">
 						<fieldset class="col-md-6">
 							<input type="text" name="" placeholder="NOME COMPLETO *">
 							<input type="text" name="" placeholder="E-MAIL *">
@@ -133,3 +135,27 @@
 
 <?php endwhile; ?>
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".trabalhe").submit(function(){
+			$('.enviar').html('ENVIANDO').prop( "disabled", true );
+			$('.msg-curriculo').html('').hide();
+			var nome = $('#nome').val();
+			var email = $('#email').val();
+			var telefone = $('#telefone').val();
+			var mensagem = $('#mensagem').val();
+
+			if(email!=''){
+				$.getJSON("<?php echo get_template_directory_uri(); ?>/mail.php", { nome: nome, email: email, telefone: telefone, mensagem: mensagem }, function(result){		
+					$('.msg-curriculo').html(result).show();
+					$('.contato').trigger("reset");
+					$('.enviar').html('ENVIAR').prop( "disabled", false );
+				});
+			}else{
+				$('.msg-curriculo').html('Por favor, digite um e-mail válido.').show();
+				$('.enviar').html('Enviar').prop( "disabled", false );
+			}
+		});
+	});
+</script>

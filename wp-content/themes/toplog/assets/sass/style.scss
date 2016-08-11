@@ -152,6 +152,11 @@ form {
 	margin-top: 30px;
 }
 
+.msg-form {
+	text-align: center;
+	font-size: 1rem;
+}
+
 input, textarea, button, .button, .select2, .bootstrap-filestyle {
 	color: $cor-txt;
 	background-color: #dedede;
@@ -428,10 +433,17 @@ $hSlide: 100vh;
 	
 	.header-menu {
 		position: absolute;
-		top: 35px;
+		top: 0px;
+		padding: 35px 0;
 		width: 100%;
 		left: 0px;
 		z-index: 999;
+		@include animacao('','');
+
+		&.menu-fixed {
+			position: fixed;
+			background-color: rgba($azul-escuro, .8);
+		}
 
 		.container {
 			height: 72px;
@@ -439,6 +451,10 @@ $hSlide: 100vh;
 
 		@media all and (max-width: 600px) {
 			top: 15px;
+
+			&.menu-fixed {
+				top: -15px;
+			}
 		}
 
 		.menu-mobile {
@@ -517,7 +533,7 @@ $hSlide: 100vh;
 		height: 100vh;
 		overflow: hidden;
 		background-color: rgba($azul-escuro, .85);
-		position: absolute;
+		position: fixed;
 		top: -100vh;
 		width: 100%;
 		left: 0;
@@ -558,6 +574,26 @@ $hSlide: 100vh;
 				ul {
 					padding-left: 100px;
 					display: none;
+				}
+
+				&.idioma {
+					a {
+						border: 1px solid #fff;
+						border-radius: 50%;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						padding: 0px;
+						text-align: center;
+						line-height: 50px;
+						font-size: 1.2rem;
+						margin-left: 10px;
+						margin-bottom: 20px;
+
+						&:first-child {
+							margin-left: 20px;
+						}
+					}
 				}
 			}
 		}
@@ -792,8 +828,7 @@ $hSlide: 100vh;
 			}
 
 			.mais {
-				margin-top: 50px;
-				margin-bottom: 50px;
+				margin-top: -130px;
 				@include rotacao('');
 			}
 
@@ -954,4 +989,17 @@ $hSlide: 100vh;
 
 .slimScrollDiv, .scroll {
 	max-height: 90vh;
+}
+
+.margin-bottom-50 {
+	margin-bottom: 50px;
+}
+
+#clientes {
+	a {
+		@include animacao('','');
+		&:hover {
+			opacity: .5;
+		}
+	}
 }
