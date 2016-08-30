@@ -43,10 +43,10 @@
 	<session class="box-conteudo" id="missao">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 justify-center">
+				<div class="col-md-12 center">
 					<img src="<?php the_field('imagem_missao') ?>" alt="Missão">
 					<h2 class="destaque">MISSÃO</h2>
-					<p><?php the_field('texto_missao') ?></p>
+					<p class="justify-center"><?php the_field('texto_missao') ?></p>
 				</div>
 			</div>
 		</div>

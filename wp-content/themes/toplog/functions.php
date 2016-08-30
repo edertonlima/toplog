@@ -184,7 +184,7 @@
 		    'hierarchical' => false,
 		    'menu_position' => null,
 		    'menu_icon' => 'dashicons-tag',
-		    'supports' => array('title','thumbnail')
+		    'supports' => array('title','editor','thumbnail')
 		  );
 
 	    register_post_type( 'importacao', $args );
@@ -221,7 +221,7 @@
 		    'hierarchical' => false,
 		    'menu_position' => null,
 		    'menu_icon' => 'dashicons-tag',
-		    'supports' => array('title','thumbnail')
+		    'supports' => array('title','editor','thumbnail')
 		  );
 
 	    register_post_type( 'exportacao', $args );

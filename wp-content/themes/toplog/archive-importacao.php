@@ -56,12 +56,14 @@
 	$(document).ready(function(){
 
 		/* OPEN/CLOSE ITEM */
-		$('.mais').click(function(){
+		$('.footer-item .mais').click(function(){
+			$(this).css('opacity', 0);
 			$(this).parent().siblings('.container').css('top',0);
 		});
 
 		$('.close-item').click(function(){
 			$(this).parents('.container').css('top','100vh');
+			$(this).parents('.container').siblings('.footer-item').find('.mais').css('opacity', '1');
 		});
 	});	
 </script>

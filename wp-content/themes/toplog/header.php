@@ -105,14 +105,31 @@
 			</div>			
 				
 			<?php 
+
+				$pt = 'style="display: inline-block;"';
+				$en = 'style="display: inline-block;"';
+				$es = 'style="display: inline-block;"';
+
+				if(qtrans_getLanguage() == 'pt'){
+					$pt = 'style="display: none;"';
+				}
+
+				if(qtrans_getLanguage() == 'en'){
+					$en = 'style="display: none;"';
+				}
+
+				if(qtrans_getLanguage() == 'es'){
+					$es = 'style="display: none;"';
+				}
+
 				wp_nav_menu( array(
 					'menu'           => 'Menu Topo',
 				    'theme_location' => 'primary',
 				    'items_wrap'     => '<nav class="nav"><ul class="menu"><div class="container">
 				    	<li class="idioma">
-				    		<a href="http://localhost/di20/toplog/" title="PT">PT</a>
-				    		<a href="http://localhost/di20/toplog/en" title="EN">EN</a>
-				    		<a href="http://localhost/di20/toplog/es" title="ES">ES</a>
+				    		<a href="http://www.toplogtrade.com.br/pt" '.$pt.' title="PT">PT</a>
+				    		<a href="http://www.toplogtrade.com.br/en" '.$en.' title="EN">EN</a>
+				    		<a href="http://www.toplogtrade.com.br/es" '.$es.' title="ES">ES</a>
 				    	</li>
 				    %3$s</div></ul></nav>'
 				) );

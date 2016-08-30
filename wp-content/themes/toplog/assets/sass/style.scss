@@ -175,6 +175,7 @@ input, textarea, button, .button, .select2, .bootstrap-filestyle {
 
 input {
 	line-height: 35px;
+	height: 35px;
 }
 
 .bootstrap-filestyle {
@@ -304,7 +305,6 @@ strong {
 h1 {
 	float: right;
 	width: 220px;
-	height: 72px;
 
 	a {
 		img {
@@ -312,9 +312,8 @@ h1 {
 		}
 	}
 
-	@media all and (max-width: 600px) {
-		width: 190px;
-		height: 63px;
+	@media all and (max-width: 992px) {
+		width: 180px;
 	}
 }
 
@@ -331,6 +330,9 @@ p {
 
 .center {
 	text-align: center;
+}
+.no-margim {
+	margin: 0!important;
 }
 
 /* SLIDE */
@@ -396,6 +398,12 @@ $hSlide: 100vh;
 				@media all and (max-width: 1000px) {
 					font-size: 5vh;
 					line-height: normal;
+					padding: 10vh 20px;
+				}
+
+				@media all and (max-width: 700px) {
+					font-size: 4vh;
+					line-height: normal;
 				}
 			}
 
@@ -434,7 +442,7 @@ $hSlide: 100vh;
 	.header-menu {
 		position: absolute;
 		top: 0px;
-		padding: 35px 0;
+		padding: 25px 0;
 		width: 100%;
 		left: 0px;
 		z-index: 999;
@@ -446,23 +454,24 @@ $hSlide: 100vh;
 		}
 
 		.container {
-			height: 72px;
+			//height: 72px;
 		}
 
 		@media all and (max-width: 600px) {
-			top: 15px;
-
-			&.menu-fixed {
-				top: -15px;
-			}
+			top: 0px;
+			padding: 10px 0;
 		}
 
 		.menu-mobile {
 			float: left;
-			width: 50px;
-			height: 35px;
+			width: 40px;
+			height: 30px;
 			margin-top: 18px;
 			text-decoration: none;
+
+			@media all and (max-width: 992px) {
+				margin-top: 13px;
+			}
 
 			span {
 				display: block;
@@ -494,18 +503,18 @@ $hSlide: 100vh;
 					}
 
 					&:before {
-						top: 15px;
+						top: 10px;
 					}
 
 					&:after {
-						top: 30px;
+						top: 20px;
 					}
 				}
 
 				span, span:before, span:after {
 					background-color: #ffffff;
-					height: 5px;
-					width: 50px;
+					height: 4px;
+					width: 40px;
 				}
 
 				&:hover {
@@ -518,13 +527,6 @@ $hSlide: 100vh;
 
 			@media all and (max-width: 600px) {
 				margin-top: 13px;
-				width: 40px;
-
-				&:not(.active){
-					span, span:before, span:after {
-						width: 40px;
-					}
-				}
 			}
 		}
 	}
@@ -612,6 +614,11 @@ $hSlide: 100vh;
 
 	.container {
 		max-width: 960px;
+		padding: 0 35px;
+
+		@media all and (max-width: 992px) {
+			padding: 0 30px;
+		}
 	}
 
 	h2 {
@@ -695,6 +702,15 @@ $hSlide: 100vh;
 
 	&.medium-height {
 		height: $hSlide/1.5;
+	}
+
+	&.beneficios-servicos {
+		.col-md-5 {
+			padding: 0;
+		}
+		h2 {
+			text-align: center; 
+		}
 	}
 }
 
@@ -791,6 +807,7 @@ $hSlide: 100vh;
 		margin-bottom: 30px;
 		position: relative;
 		overflow: hidden;
+		z-index: 10;
 
 		&:last-child {
 			margin-bottom: 0px;
@@ -828,7 +845,7 @@ $hSlide: 100vh;
 			}
 
 			.mais {
-				margin-top: -130px;
+				margin-top: -70px;
 				@include rotacao('');
 			}
 
@@ -866,6 +883,10 @@ $hSlide: 100vh;
 			position: absolute;
 			bottom: 0px;
 			background-color: rgba(#ffffff, .7);
+			.mais {
+				opacity: 0;
+				@include animacao-off();
+			}
 		}
 
 		.mais {
@@ -882,21 +903,24 @@ $hSlide: 100vh;
 		}
 
 		&.full-height {
-			height: $hSlide;
+			height: ($hSlide)-10;
 
 			.container {
-				height: $hSlide;
-				top: $hSlide;			
+				height: ($hSlide)-10;
+				height: ($hSlide)-10;			
 			}
 		}
 	}
 }
 
 #contato {
-	.container {
-		max-width: 1280px;
-	}
+	.box-contato {
+		padding-left: 0;
 
+		@media all and (max-width: 992px) {
+			padding-right: 0;
+		}
+	}
 	@media all and (max-width: 1100px) {
 		.box-contato {
 			width: 100%;
@@ -988,7 +1012,8 @@ $hSlide: 100vh;
 }
 
 .slimScrollDiv, .scroll {
-	max-height: 90vh;
+	max-height: 50vh;
+	margin-top: 10px;
 }
 
 .margin-bottom-50 {
@@ -1001,5 +1026,22 @@ $hSlide: 100vh;
 		&:hover {
 			opacity: .5;
 		}
+	}
+}
+
+.resumo-single {
+	h2 {
+		margin-top: 0;
+	}
+	span {
+		display: block;
+		text-align: left;
+	}
+}
+
+.content-single {
+	margin: 50px 0; 
+	img {
+		max-width: 100%;
 	}
 }
