@@ -18,7 +18,7 @@
 			<div class="col-md-8">
 				<div class="resumo-single">
 					<h2><?php the_title(); ?></h2>
-					<?php the_field('conteudo_produto'); ?>
+					<span><?php the_field('conteudo_produto'); ?></span>
 				</div>
 				<div class="content-single">
 					<?php echo $post->post_content; ?>
